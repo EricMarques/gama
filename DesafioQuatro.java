@@ -42,6 +42,12 @@ public class DesafioQuatro {
          */
         String name = "";
 
+        /*
+         * Criação da variável overTwentyFive de tipo int
+         * Esta variável será utilizada como um contador auxiliar.
+         */
+        int overTwentyFive = 0;
+
         System.out.println("\n++++ Censo Demográfico 2022 ++++");
 
         // Início do laço DO WHILE
@@ -51,12 +57,6 @@ public class DesafioQuatro {
                     "2 - Sair\n" +
                     "Opção ==> ");
             option = input.nextInt();
-
-            /*
-             * Criação da variável overTwentyFive de tipo int
-             * Esta variável será utilizada como um contador auxiliar.
-             */
-            int overTwentyFive = 0;
 
             // Início da condicional SWITCH
             switch (option) {
@@ -77,7 +77,7 @@ public class DesafioQuatro {
                      * Verifica se os entrevistados satisfazem as condições:
                      * acima de 25 anos E maiores de 1.75m
                      */
-                    if (age >= 25 && height >= 1.75) {
+                    if (age >= 25 && height > 1.75) {
                         overTwentyFive++;
                     }
                     break;
