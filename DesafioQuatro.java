@@ -8,8 +8,8 @@ o nome,
 a idade e
 a altura dos usuários
 
-no final mostre como saída quantas pessoas acima de 25 anos e maiores de 1.75 participaram da pesquisa.
-
+no final mostre como saída quantas pessoas
+acima de 25 anos e maiores de 1.75 participaram da pesquisa.
 */
 
 // Import da biblioteca Scanner
@@ -21,38 +21,88 @@ public class DesafioQuatro {
         Scanner input = new Scanner(System.in);
 
         /*
-        Criação da variável overTwentyFive de tipo int
-        Esta variável armazenará a quantidade de pessoa que estão compreendidas acima de 25 anos e maiores de 1.75m
-        */
-        int overTwentyFive = 0;
+         * Declaração das variáveis de tipo 'int' que receberão:
+         * - a idade dos entrevistados
+         * - o contador de pessoas que participarão da pesquisa
+         * - opção recebida pelo entrevistador
+         */
+        int age;
+        int count = 0;
+        int option;
 
-        System.out.print("Informe a quantidade de pessoa que participarão desta pesquisa: ");
-        // Inicialização da variável que receberá a quantidade de pessoas que participarão da pesquisa.
-        int count = input.nextInt();
+        /*
+         * Declaração de variável de tipo 'float' que receberá a altura dos
+         * entrevistados
+         */
+        float height;
 
-        // Início do laço FOR
-        for (int i = 1; i <= count; i++) {
-            System.out.print("\n==== Dados da pessoa nº" + i + " ====\n");
+        /*
+         * Declaração de variável de tipo 'String' que receberá o nome dos
+         * entrevistados
+         */
+        String name = "";
 
-            System.out.print("Nome: ");
-            String name = input.next();
+        System.out.println("\n++++ Censo Demográfico 2022 ++++");
 
-            System.out.print("Idade: ");
-            int age = input.nextInt();
+        // Início do laço DO WHILE
+        System.out.print("\n\nSelecione uma das opções:");
+        do {
+            System.out.print("\n1 - Cadastrar uma nova pessoa.\n" +
+                    "2 - Sair\n" +
+                    "Opção ==> ");
+            option = input.nextInt();
 
-            System.out.print("Altura: ");
-            float height = input.nextFloat();
+            /*
+             * Criação da variável overTwentyFive de tipo int
+             * Esta variável será utilizada como um contador auxiliar.
+             */
+            int overTwentyFive = 0;
 
-            // Verifica se os entrevistados satisfazem as condições acima de 25 anos E maiores de 1.75m
-            if (age >= 25 && height >= 1.75) {
-                overTwentyFive++;
-            }
-        }
-        // Fim do laço FOR
+            // Início da condicional SWITCH
+            switch (option) {
+                case 1:
+                    // Opção de leitura dos dados dos entrevistados.
+                    System.out.print("\n==== Dados da pessoa nº" + (count) + " ====\n");
 
-        System.out.printf(
-                "Foram entrevistadas %s pessoa(s), desta(s) %s é/são acima de 25 anos e maiore(s) de 1.75m.\n", count,
-                overTwentyFive);
+                    System.out.print("Nome: ");
+                    name = input.next();
+
+                    System.out.print("Idade: ");
+                    age = input.nextInt();
+
+                    System.out.print("Altura: ");
+                    height = input.nextFloat();
+
+                    /*
+                     * Verifica se os entrevistados satisfazem as condições:
+                     * acima de 25 anos E maiores de 1.75m
+                     */
+                    if (age >= 25 && height >= 1.75) {
+                        overTwentyFive++;
+                    }
+                    break;
+
+                case 2:
+                    // Opção para encerramento do programa e apresentação dos resultados.
+                    if (count == 0) {
+                        System.out.println("\nNão existem pessoas cadastradas!\n");
+                    } else {
+                        System.out.printf("\nObrigado por responder o Censo 2022!\n" +
+                                "\nForam entrevistadas %s pessoa(s), desta(s) %s é/são acima de 25 " +
+                                "anos e maiore(s) de 1.75m.\n",
+                                count, overTwentyFive);
+                    }
+
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opção inválida!\n");
+                    break;
+            } // Fim da condicional SWITCH
+            count++;
+
+        } while (option == 1);
+        // Fim do laço DO WHILE
 
         input.close();
     }
