@@ -10,7 +10,7 @@ Médico
 Funcionário
 Consulta
 */
-create database PlanoSaude;
+-- create database PlanoSaude;
 
 use PlanoSaude;
 
